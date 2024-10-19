@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { styled, alpha } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
@@ -29,10 +30,29 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 }));
 
 export default function NavBar() {
+  const navigate = useNavigate(); // Initialize the navigate function
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
+  };
+  const scrollToSection = (sectionId) => {
+    // Check if the current path is not the homepage
+    if (window.location.pathname !== "/") {
+      navigate("/"); // Navigate to the homepage
+      setTimeout(() => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100); // Adjust the timeout as needed
+    } else {
+      // If already on the homepage, scroll immediately
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }
   };
 
   return (
@@ -52,23 +72,43 @@ export default function NavBar() {
           >
             <Sitemark />
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
-              <Button variant="text" color="info" size="small">
+              <Button
+                variant="text"
+                color="info"
+                size="small"
+                onClick={() => scrollToSection("features")}
+              >
                 Features
               </Button>
-              <Button variant="text" color="info" size="small">
+              <Button
+                variant="text"
+                color="info"
+                size="small"
+                onClick={() => scrollToSection("testimonials")}
+              >
                 Testimonials
               </Button>
-              <Button variant="text" color="info" size="small">
+              <Button
+                variant="text"
+                color="info"
+                size="small"
+                onClick={() => scrollToSection("highlights")}
+              >
                 Highlights
               </Button>
-              <Button variant="text" color="info" size="small">
+              <Button
+                variant="text"
+                color="info"
+                size="small"
+                onClick={() => scrollToSection("pricing")}
+              >
                 Pricing
               </Button>
               <Button
                 variant="text"
                 color="info"
                 size="small"
-                sx={{ minWidth: 0 }}
+                onClick={() => scrollToSection("faq")}
               >
                 FAQ
               </Button>
@@ -111,12 +151,20 @@ export default function NavBar() {
                   </IconButton>
                 </Box>
                 <Divider sx={{ my: 3 }} />
-                <MenuItem>Features</MenuItem>
-                <MenuItem>Testimonials</MenuItem>
-                <MenuItem>Highlights</MenuItem>
-                <MenuItem>Pricing</MenuItem>
-                <MenuItem>FAQ</MenuItem>
-            
+                <MenuItem onClick={() => scrollToSection("features")}>
+                  Features
+                </MenuItem>
+                <MenuItem onClick={() => scrollToSection("testimonials")}>
+                  Testimonials
+                </MenuItem>
+                <MenuItem onClick={() => scrollToSection("highlights")}>
+                  Highlights
+                </MenuItem>
+                <MenuItem onClick={() => scrollToSection("pricing")}>
+                  Pricing
+                </MenuItem>
+                <MenuItem onClick={() => scrollToSection("faq")}>FAQ</MenuItem>
+
                 <MenuItem>
                   <Button color="primary" variant="contained" fullWidth>
                     Sign up

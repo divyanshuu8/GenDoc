@@ -10,29 +10,27 @@ import Testimonials from "./Testimonials";
 import FAQ from "./FAQ";
 
 const Home = () => {
-  
-
   return (
     <div>
       <Hero />
       <LogoCollection />
-      <section>
+      <section id="features">
         <Features />
       </section>
       <Divider />
-      <section >
+      <section id="testimonials">
         <Testimonials />
       </section>
       <Divider />
-      <section >
+      <section id="highlights">
         <Highlights />
       </section>
       <Divider />
-      <section >
+      <section id="pricing">
         <Pricing />
       </section>
       <Divider />
-      <section >
+      <section id="faq">
         <FAQ />
       </section>
       <Divider />

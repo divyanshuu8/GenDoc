@@ -7,9 +7,10 @@ import NavBar from "./Components/NavBar";
 import Footer from "./Components/Footer";
 import Home from "./Components/HomePage/Home";
 
-import Products from "./Components/ProductPage/Products";
 import SignIn from "./Components/sign-in/SignIn";
 import getMPTheme from "./Components/theme/getMPTheme";
+import SignUp from "./Components/sign-up/SignUp";
+import Products from "./Components/ProductPage/Products";
 
 function App() {
   const mode = "light"; // Set mode to light directly
@@ -30,6 +31,7 @@ function App() {
           {/* Products route */}
           <Route path="/products" element={<Products />} />
           <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
 
         <Footer />
