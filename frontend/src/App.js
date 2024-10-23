@@ -11,6 +11,7 @@ import SignIn from "./Components/sign-in/SignIn";
 import getMPTheme from "./Components/theme/getMPTheme";
 import SignUp from "./Components/sign-up/SignUp";
 import Products from "./Components/ProductPage/Products";
+import { Builder } from "./Components/ResumeBuilder/Builder";
 
 function App() {
   const mode = "light"; // Set mode to light directly
@@ -30,6 +31,7 @@ function App() {
           />
           {/* Products route */}
           <Route path="/products" element={<Products />} />
+          <Route path="/products/resumebuilder" element={<Builder />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>
